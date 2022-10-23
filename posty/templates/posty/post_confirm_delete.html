@@ -1,0 +1,17 @@
+{% extends "posty/base.html" %}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Usuń post <i>{{ object.tytul }}</i></legend>
+            <p>Jesteś pewien, że chcesz usunąć post {{ object.tytul }}</p>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Usuń</button>
+            <a class="btn btn-secondary" href="{% url 'posty-detail' object.slug %}">Anuluj</a>
+        </div>
+    </form>
+</div>
+{% endblock content%}
